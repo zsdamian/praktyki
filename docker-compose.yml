@@ -1,0 +1,33 @@
+version: "2.1"
+services:
+    php:
+        container_name: practice_php
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./src:/var/www/html # volumen łączący katalog src z katalogiem głownym projektu w kontenerze
+        networks:
+            - app
+        depends_on:
+            - mysql
+        ports:
+            - 8000:80 # mapujesz port dockera 80 na port lokalny 8000.
+    mysql: # instancja mysql bazująca na oficjalnym obrazie docker
+        container_name: practice_mysql
+        image: mysql:8.3
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d # wrzucenie skryptu który inicjuje uruchomienie kontenera, pod odpaleniu zobaczysz że w db/storage pojawi się mnóstwo plików
+            - ./db/storage:/var/lib/mysql # podpięcie volumenu pod dane baz daynch ,żeby przy wyłaczeniu dockera nie znikała ci baza, zerknij w plik mysql-init.sh
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: main
+            MYSQL_USER: kolnel
+            MYSQL_PASSWORD: root
+        networks:
+            - app
+        ports:
+            - "3306:3306"
+networks:
+    app:
+        driver: bridge
