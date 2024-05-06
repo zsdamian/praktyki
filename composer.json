@@ -1,0 +1,8 @@
+{
+  "name": "kornel/praktyki",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}
