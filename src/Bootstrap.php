@@ -2,30 +2,48 @@
 
 namespace App;
 
+use App\Core\Container;
 use App\Core\Request;
 use App\Core\Router;
-use App\Core\Base;
+use App\Core\Database;
 
 class Bootstrap {
 
-    private const CONFIG_DATABASE = [
-        'host' => 'mysql',
-        'user' => 'root',
-        'pass' => 'root',
-        'db' => 'praktyki'
-    ];
+    private $config;
 
     public function run(): void
-    {  
-        $dbConnection = new \PDO(
-            'mysql:host=' . self::CONFIG_DATABASE['host'] . ';dbname=' . self::CONFIG_DATABASE['db'],
-            self::CONFIG_DATABASE['user'],
-            self::CONFIG_DATABASE['pass']
+    {
+        $this->loadConfig();
+
+
+        $container = $this->initContainer();
+        $request = new Request();
+        $router = new Router($container);
+
+        echo $router->route($request);
+    }
+
+    private function initContainer(): Container
+    {
+        $container = new Container();
+
+        $dbConfig = $this->config['database'];
+        $pdo = new \PDO(sprintf('mysql:host=%s;dbname=%s', $dbConfig['host'], $dbConfig['db']),
+            $dbConfig['user'],
+            $dbConfig['pass']
         );
 
-        $request = new Request();
-        $router = new Router($dbConnection);
-        echo $router->route($request);
+        $database = new Database($pdo);
+
+        $container->addService('pdo', $pdo);
+        $container->addService('database', $database);
+
+        return $container;
+    }
+
+    private function loadConfig(): void
+    {
+        $this->config = require_once 'config/config.php';
     }
 
 }

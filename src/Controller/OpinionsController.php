@@ -2,12 +2,24 @@
 
 namespace App\Controller;
 
+use App\Core\Container;
 use App\Core\Request;
-use App\Core\Base;
+use App\Core\Database;
 class OpinionsController{
-    public function index(Request $request, Base $base): string 
+
+    /**
+     * @var Container
+     */
+    private $container;
+
+    public function __construct(Container $container)
     {
-        $comments = $base->getComments();
+        $this->container = $container;
+    }
+
+    public function index(Request $request): string
+    {
+        $comments = $this->container->getService('database')->getComments();
         return $this->view('Comments', ['Comments' => $comments]);
     }
 

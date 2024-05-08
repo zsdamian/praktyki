@@ -4,32 +4,37 @@ namespace App\Core;
 
 class Router {
 
+    /**
+     * @var array
+     */
     private $routes;
-    private $dbConnection;
 
-    public function __construct($dbConnection)
+    /**
+     * @var Container
+     */
+    private $container;
+
+    public function __construct(Container $container)
     {
-        $this->dbConnection = $dbConnection;
-        $json = file_get_contents('config/routes.json');
-        $this->routes = json_decode($json, true);
+        $this->container = $container;
+        $this->routes = json_decode(file_get_contents('config/routes.json'), true);
     }
 
     public function route(Request $request): string
     {
         foreach ($this->routes as $key => $value) {
             if ($key === $request->getUrl()) {
-                $base = new Base($this->dbConnection);
-                return $this->callController($request, $value, $base);
+                return $this->callController($request, $value);
             }
         }
         return "404";
     }
 
-    private function callController(Request $request, array $config, Base $base): string
+    private function callController(Request $request, array $config): string
     {
         $controllerName = $config["controller"];
         $actionName = $config["action"];
-        $controller = new $controllerName();
-        return $controller->$actionName($request, $base);
+        $controller = new $controllerName($this->container);
+        return $controller->$actionName($request);
     }
 }

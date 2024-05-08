@@ -2,10 +2,10 @@
 
 namespace App\Core;
 
-class Base{
+class Database{
     private $db;
 
-    public function __construct($dbConnection) {
+    public function __construct(\PDO $dbConnection) {
         $this->db = $dbConnection; 
     }
 

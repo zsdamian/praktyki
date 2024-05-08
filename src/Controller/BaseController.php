@@ -2,13 +2,25 @@
 
 namespace App\Controller;
 
+use App\Core\Container;
 use App\Core\Request;
-use App\Core\Base;
+use App\Core\Database;
 
 class BaseController{
-    public function index(Request $request, Base $base): string 
+
+    /**
+     * @var Container
+     */
+    private $container;
+
+    public function __construct(Container $container)
     {
-        $drinks = $base->getDrinks();
+        $this->container = $container;
+    }
+
+    public function index(Request $request): string
+    {
+        $drinks = $this->container->getService('database')->getDrinks();
         return $this->view('Drinks', ['Drinks' => $drinks]);
     }
 
@@ -18,8 +30,6 @@ class BaseController{
         return ob_get_clean();
     }
 }
-
-
 
 
 
