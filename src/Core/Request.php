@@ -15,5 +15,7 @@ class Request {
             return $k !== 'url';
         }, ARRAY_FILTER_USE_KEY);
     }
-
 }
+
+$request = new Request();
+$url = $request->getUrl();

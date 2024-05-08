@@ -1,0 +1,5 @@
+{
+    "kontakt": {"controller":"App\\Controller\\ContactController","action":"index"},
+    "opinie": {"controller":"App\\Controller\\OpinionsController","action":"index"},
+    "baza": {"controller":"App\\Controller\\BaseController","action":"index"}
+}
