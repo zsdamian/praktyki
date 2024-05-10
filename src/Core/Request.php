@@ -15,6 +15,23 @@ class Request {
             return $k !== 'url';
         }, ARRAY_FILTER_USE_KEY);
     }
+    
+    public function getQueryParam(string $param): ?string
+    {
+        return isset($_GET[$param]) ? $_GET[$param] : null;
+    }
+
+    public function clearQueryParam(string $param): ?string
+    {
+        if (isset($_GET[$param])) {
+            $value = $_GET[$param];
+            unset($_GET[$param]);
+            return $value;
+        } else {
+            return null;
+        }
+    }
+    
 }
 
 $request = new Request();

@@ -8,7 +8,7 @@
     <ul>
     <?php foreach ($Comments as $Comment):?>
             <li> 
-                <?php echo $Comment['Nick']; ?> Napisał:<br> <?php echo $Comment['CommentText']; ?><br> Dnia: <?php echo $Comment['Date']; ?> 
+                <?php echo $Comment['Nick']; ?> Napisał:<br> <?php echo $Comment['CommentText']; ?><br> Dnia: <?php echo $Comment['Date'];?><br>________________________
             </li>
         <?php endforeach; ?>
     </ul><br>

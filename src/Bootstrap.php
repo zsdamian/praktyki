@@ -50,5 +50,5 @@ class Bootstrap {
 ?> 
     <button onclick="window.location.href='http://localhost:8000/kontakt'">Przejdź do Kontakt</button>
     <button onclick="window.location.href='http://localhost:8000/opinie'">Przejdź do Opinie</button>
-    <button onclick="window.location.href='http://localhost:8000/baza'">Przejdź do Baza</button>
+    <button onclick="window.location.href='http://localhost:8000/produkty'">Przejdź do Produkty</button>
     <button onclick="window.location.href='http://localhost:8000/chuj'">Przejdź do 404</button><br>

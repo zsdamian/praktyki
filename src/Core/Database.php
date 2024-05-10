@@ -9,22 +9,35 @@ class Database{
         $this->db = $dbConnection; 
     }
 
-    public function getDrinks() {
-        $query = "SELECT * FROM drink_categories";
+    /**
+     * Obsługa Produktów
+     */
+
+    public function getProducts($categories) {
+        $query = "SELECT * FROM $categories";/// jakos to ogarnac
         $stmt = $this->db->prepare($query); 
         $stmt->execute(); 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC); 
     }
 
-    public function getComments() {
-        $query = "SELECT * FROM comments_data";
+
+
+    /**
+     * Obsługa komentarzy
+     */
+    public function getComments($category) {   
+        $query = "SELECT * FROM $category";
         $stmt = $this->db->prepare($query); 
         $stmt->execute(); 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC); 
     }
 
-    public function putComments() {
-        $query = "INSERT INTO Comments (Nick, CommentText, Date)
+    public function putComments(string $nick, string $comment) {
+        $query = "INSERT INTO comments_data (Nick, CommentText, Date)
         VALUES ('$nick', '$comment', CURDATE())";
+        $stmt = $this->db->prepare($query); 
+        $stmt->execute(); 
+        
+
     }
 }

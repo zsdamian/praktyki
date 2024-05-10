@@ -27,4 +27,9 @@ class Container
         return $this->services[$serviceName];
     }
 
+    public function get(string $serviceName)
+    {
+        return $this->getService($serviceName);
+    }
+
 }

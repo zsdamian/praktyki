@@ -1,5 +1,12 @@
 {
     "kontakt": {"controller":"App\\Controller\\ContactController","action":"index"},
     "opinie": {"controller":"App\\Controller\\OpinionsController","action":"index"},
-    "baza": {"controller":"App\\Controller\\BaseController","action":"index"}
+    "produkty": {"controller":"App\\Controller\\CategoriesController","action":"index"},
+    "produkty/food_products": {"controller":"App\\Controller\\ProductsController","action":"index"},
+    "produkty/cleaning_products": {"controller":"App\\Controller\\ProductsController","action":"index"},
+    "produkty/drink_products": {"controller":"App\\Controller\\ProductsController","action":"index"},
+    
+    
+    "Komentarz": "Do zrobienia jakaś logika tego"
 }
+
