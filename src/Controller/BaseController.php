@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Core\Container;
-
 abstract class BaseController
 {
     protected $container;

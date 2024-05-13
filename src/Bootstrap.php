@@ -5,7 +5,7 @@ namespace App;
 use App\Core\Container;
 use App\Core\Request;
 use App\Core\Router;
-use App\Core\Database;
+use App\Model\Database;
 
 class Bootstrap {
 
@@ -54,5 +54,5 @@ class Bootstrap {
     <button onclick="window.location.href='http://localhost:8000/produkty'">Przejdź do Produkty</button>
     <button onclick="window.location.href='http://localhost:8000/chuj'">Przejdź do 404</button>
     <button onclick="window.location.href='http://localhost:8000/sklep'">Przejdź do Sklep</button>
-    <button onclick="window.location.href='http://localhost:8000/sklep/vape'">Przejdź do Sklep/vape</button>
-    <button onclick="window.location.href='http://localhost:8000/sklep/vape/liquidy'">Przejdź do Sklep/vape/liquidy</button><br>
+    <button onclick="window.location.href='http://localhost:8000/sklep/agd'">Przejdź do Sklep/agd</button>
+    <button onclick="window.location.href='http://localhost:8000/sklep/agd/odkurzacz'">Przejdź do Sklep/agd/odkurzacz</button><br>

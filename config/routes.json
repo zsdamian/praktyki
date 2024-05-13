@@ -7,6 +7,6 @@
     "/\/sklep\/(?'category'.*)": {"Controller/": "App\\Controller\\ShopCategoryController", "action": "index"},
     "/\/sklep\/(?'category'.*)\/(?'product'.*)/": {"controller": "App\\Controller\\ShopProductController", "action": "index"},
 
-    
-    "Komentarz": "Do zrobienia jakaś logika tego"
+    "sklep/agd": {"controller": "App\\Controller\\ShopCategoryController", "action": "index"},
+    "sklep/agd/odkurzacz": {"controller": "App\\Controller\\ShopProductController", "action": "index"}
 }   
