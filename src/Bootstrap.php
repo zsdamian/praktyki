@@ -25,12 +25,13 @@ class Bootstrap {
 
     private function initContainer(): Container
     {
+        
         $container = new Container();
-
         $dbConfig = $this->config['database'];
         $pdo = new \PDO(sprintf('mysql:host=%s;dbname=%s', $dbConfig['host'], $dbConfig['db']),
             $dbConfig['user'],
             $dbConfig['pass']
+            
         );
 
         $database = new Database($pdo);
@@ -51,4 +52,7 @@ class Bootstrap {
     <button onclick="window.location.href='http://localhost:8000/kontakt'">Przejdź do Kontakt</button>
     <button onclick="window.location.href='http://localhost:8000/opinie'">Przejdź do Opinie</button>
     <button onclick="window.location.href='http://localhost:8000/produkty'">Przejdź do Produkty</button>
-    <button onclick="window.location.href='http://localhost:8000/chuj'">Przejdź do 404</button><br>
+    <button onclick="window.location.href='http://localhost:8000/chuj'">Przejdź do 404</button>
+    <button onclick="window.location.href='http://localhost:8000/sklep'">Przejdź do Sklep</button>
+    <button onclick="window.location.href='http://localhost:8000/sklep/vape'">Przejdź do Sklep/vape</button>
+    <button onclick="window.location.href='http://localhost:8000/sklep/vape/liquidy'">Przejdź do Sklep/vape/liquidy</button><br>

@@ -29,7 +29,7 @@ class Router {
         }
         return "404";
     }
-
+    
     private function callController(Request $request, array $config): string
     {
         $controllerName = $config["controller"];

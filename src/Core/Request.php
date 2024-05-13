@@ -2,12 +2,20 @@
 
 namespace App\Core;
 
-class Request {
-
+class Request
+{
     public function getUrl(): string
     {
-        return rtrim($_GET['url'], '/');
+        return rtrim(strtolower($_GET['url']), '/');
+    } 
+    public function getUrlFirstSegment() //nie wiem jak to skomentujesz ale poprostu wymyśliłem coś takiego żeby działało :D // unused aktualnie
+    {
+        $trimmedUrl = rtrim(strtolower($_GET['url']), '/');
+        $urlSegments = explode('/', $trimmedUrl);
+        return $urlSegments[0];
     }
+    
+    
 
     public function getQuery(): array
     {
@@ -21,6 +29,17 @@ class Request {
         return isset($_GET[$param]) ? $_GET[$param] : null;
     }
 
+public function getArgument(string $url): array
+{
+    $pattern = "/.*\/(?'arg1'.*)\/(?'arg2'.*)/";
+    preg_match($pattern, $url, $matches); 
+    return $matches;
+}
+
+
+}
+
+/*
     public function clearQueryParam(string $param): ?string
     {
         if (isset($_GET[$param])) {
@@ -31,8 +50,10 @@ class Request {
             return null;
         }
     }
-    
+
 }
+*/
 
 $request = new Request();
 $url = $request->getUrl();
+$argUrl = $url;
