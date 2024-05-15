@@ -14,21 +14,25 @@
             text-align: center;
         }
     </style>
+    <script>
+        function fetchOpinions(productId){
+            console.log('trigger działa a id to: ' + productId);
+        }
+    </script>
 </head>
 <body>
-    <h1>Produkty</h1>
-    <?php foreach ($product as $prod): ?>
+<?php $product = ['name' => 'Faja', 'producer' => 'Smok', 'price' => 162, 'id' => 1]; ?>
         <div class="product">
 
-            <h3><?php echo $prod['name']; ?></h3>
+            <h3><?php echo $product['name']; ?></h3>
             
-            <?php echo $prod['producer']; ?><br>
+            <?php echo $product['producer']; ?><br>
             
-            <?php echo "Cena: " . $prod['price'] . "zł"; ?><br>
+            <?php echo "Cena: " . $product['price'] . "zł"; ?><br>
             
-            <?php echo $prod['description']; ?>
+            <?php echo $product['description']; ?>
 
+            <button onclick="fetchOpinions(<?php echo $product['id']; ?>)">Pokaż opinie</button>
         </div>
-    <?php endforeach; ?>
 </body>
 </html>

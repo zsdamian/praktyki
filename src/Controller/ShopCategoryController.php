@@ -8,9 +8,7 @@ class ShopCategoryController extends BaseController
 {
     public function index(Request $request): string
     {
-        $category = $this->container->get('ShopCategory')->getCategoryProducts();
-        return $this->view('ShopCategory', ['category' => $category]);
+        $products = $this->container->get('ShopProduct')->getProductsByCategory($request->getArgument('category'));
+        return $this->view('ShopCategory', ['products' => $products]);
     }
 }
-
-

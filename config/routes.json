@@ -1,12 +1,12 @@
 {
-    "kontakt": {"controller":"App\\Controller\\ContactController","action":"index"},
-    "opinie": {"controller":"App\\Controller\\OpinionsController","action":"index"},
+    "/^kontakt$/": {"controller":"App\\Controller\\ContactController","action":"index"},
+    "/^opinie$/": {"controller":"App\\Controller\\OpinionsController","action":"index"},
 
 
-    "sklep": {"controller": "App\\Controller\\ShopMainController", "action": "index"},
-    "/\/sklep\/(?'category'.*)": {"Controller/": "App\\Controller\\ShopCategoryController", "action": "index"},
-    "/\/sklep\/(?'category'.*)\/(?'product'.*)/": {"controller": "App\\Controller\\ShopProductController", "action": "index"},
+    "/^sklep$/": {"controller": "App\\Controller\\ShopMainController", "action": "index"},
+    "/^sklep\\/(?'category'[a-zA-Z0-9\\-]+)$/": {"controller": "App\\Controller\\ShopCategoryController", "action": "index"},
+    "/^sklep\\/(?'category'[a-zA-Z0-9\\-]+)\\/(?'product'[a-zA-Z0-9\\-]+)$/": {"controller": "App\\Controller\\ShopProductController", "action": "index"},
 
-    "sklep/agd": {"controller": "App\\Controller\\ShopCategoryController", "action": "index"},
-    "sklep/agd/odkurzacz": {"controller": "App\\Controller\\ShopProductController", "action": "index"}
+    "/^sklep\\/agd/": {"controller": "App\\Controller\\ShopCategoryController", "action": "index"},
+    "/^sklep\\/agd\\/odkurzacz/": {"controller": "App\\Controller\\ShopProductController", "action": "index"}
 }   

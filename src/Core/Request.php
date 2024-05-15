@@ -4,10 +4,29 @@ namespace App\Core;
 
 class Request
 {
+    /** @var string[] List of PATH arguments */
+    private $arguments;
+
     public function getUrl(): string
     {
         return rtrim(strtolower($_GET['url']), '/');
-    } 
+    }
+
+    public function setArguments(array $arguments): self
+    {
+        $this->arguments = $arguments;
+        return $this;
+    }
+
+    public function getArguments(): array
+    {
+        return $this->arguments;
+    }
+
+    public function getArgument(string $name): ?string
+    {
+        return $this->arguments[$name] ?? null;
+    }
 
     public function getQuery(): array
     {
@@ -21,21 +40,6 @@ class Request
         return isset($_GET[$param]) ? $_GET[$param] : null;
     }
 
-    public function getArgument(string $url): array
-    {
-        $pattern = "/.*\/(?'arg1'.*)\/(?'arg2'.*)/";
-        preg_match($pattern, $url, $matches); 
-        
-        $args = array(
-            'arg1' => isset($matches['arg1']) ? $matches['arg1'] : null,
-            'arg2' => isset($matches['arg2']) ? $matches['arg2'] : null
-        );
-    
-        return $args;   
-    }
 
 
 }
-
-$request = new Request();
-$url = $request->getUrl();

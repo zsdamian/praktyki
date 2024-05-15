@@ -23,7 +23,9 @@ class Router {
     public function route(Request $request): string
     {
         foreach ($this->routes as $key => $value) {
-            if ($key === $request->getUrl()) {
+            $matches = [];
+            if (preg_match($key, $request->getUrl(), $matches)) {
+                $request->setArguments($matches);
                 return $this->callController($request, $value);
             }
         }

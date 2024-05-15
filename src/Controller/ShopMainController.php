@@ -12,5 +12,3 @@ class ShopMainController extends BaseController
         return $this->view('ShopMain', ['categories' => $categories]);
     }
 }
-
-

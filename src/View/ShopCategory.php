@@ -15,10 +15,10 @@
     </style>
 </head>
 <body>
-    <h1>Kategorie</h1>
-    <?php foreach ($category as $prod): ?>
+    <h1>Produkty tej kategorii</h1>
+    <?php foreach ($products as $product): ?>
         <div class="categoryprod">
-            <a href="/sklep/<?php echo $prod['slug'];?>/<?php echo $prod['slug'];?> "><?php echo $prod['name']; ?></a>
+            <a href="/sklep/<?php echo $product['slug'];?>/<?php echo $product['slug'];?> "><?php echo $product['name']; ?></a>
         </div>
     <?php endforeach; ?>
 </body>

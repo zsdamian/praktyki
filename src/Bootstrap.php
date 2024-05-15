@@ -3,15 +3,13 @@
 namespace App;
 
 use App\Core\Container;
-
 use App\Core\Request;
 use App\Core\Router;
-
-use App\Model\Database;
-
+use App\Model\AbstractModel;
+use App\Model\CategoryModel;
 use App\Model\ShopMain;
-use App\Model\ShopCategory;
 use App\Model\ShopProduct;
+
 class Bootstrap {
 
     private $config;
@@ -39,23 +37,18 @@ class Bootstrap {
             
         );
 
-
-
-        $database = new Database($pdo);
-
         $request = new Request();
 
         $shopmian = new ShopMain($pdo);
-        $shopcategory = new ShopCategory($pdo);
+        $shopcategory = new CategoryModel($pdo);
         $shopproduct = new ShopProduct($pdo);
 
         $container->addService('pdo', $pdo);
-        $container->addService('database', $database);
 
         $container->addService('Request', $request);
 
         $container->addService('ShopMain', $shopmian);
-        $container->addService('ShopCategory', $shopcategory);
+        $container->addService('CategoryModel', $shopcategory);
         $container->addService('ShopProduct', $shopproduct);
         
         return $container;
