@@ -7,7 +7,7 @@ class ShopProductController extends BaseController
 {
     public function index(Request $request): string
     {
-        $product = $this->container->get('database')->getProduct();
-        return $this->view('Category', ['Category' => $product]);
+        $product = $this->container->get('ShopProduct')->getProduct();
+        return $this->view('ShopProduct', ['product' => $product]);
     }
 }

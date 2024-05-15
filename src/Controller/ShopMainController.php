@@ -8,8 +8,8 @@ class ShopMainController extends BaseController
 {
     public function index(Request $request): string
     {
-        $categories = $this->container->get('database')->getCategories();
-        return $this->view('Categories', ['Categories' => $categories]);
+        $categories = $this->container->get('ShopMain')->getCategories();
+        return $this->view('ShopMain', ['categories' => $categories]);
     }
 }
 

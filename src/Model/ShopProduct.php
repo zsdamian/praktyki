@@ -5,8 +5,9 @@ namespace App\Model;
 use App\Core\Request;
 class ShopProduct extends Database {
 
-public function getProduct($arg2) 
+public function getProduct() 
     {
+        $arg2 = "odkurzacz";
         $query = "SELECT name, price, description, producer
                   From Product
                   Where slug = :productName";

@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
+    <title>Kategorie</title>
+    <style>
+        .product {
+            width: 200px; 
+            height: 200px; 
+            background-color: aquamarine; 
+            margin: 10px;
+            float:  left;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Categories</h1>
-        <?php foreach ($product as $it): ?>
-            <?php echo $it['name']; ?>
-        <?php endforeach; ?>
-</body> 
+    <h1>Produkty</h1>
+    <?php foreach ($product as $prod): ?>
+        <div class="product">
+
+            <h3><?php echo $prod['name']; ?></h3>
+            
+            <?php echo $prod['producer']; ?><br>
+            
+            <?php echo "Cena: " . $prod['price'] . "zł"; ?><br>
+            
+            <?php echo $prod['description']; ?>
+
+        </div>
+    <?php endforeach; ?>
+</body>
 </html>
-<?php
-
-//dobrax3, tutaj tworzy podgląd produktu z dokladniejszymi informacjami
-
-?>

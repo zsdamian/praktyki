@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
+    <title>Kategorie</title>
+    <style>
+        .category {
+            width: 100px; 
+            height: 100px; 
+            background-color: #ccc; 
+            margin: 10px;
+            float: left; 
+        }
+    </style>
 </head>
 <body>
-    <h1>Categories</h1>
-        <?php foreach ($categories as $category): ?>
-            <?php echo $category['name']; ?>
-        <?php endforeach; ?>
-</body> 
+    <h1>Produkty</h1>
+    <?php foreach ($categories as $category): ?>
+        <div class="category">
+            <a href="/sklep/<?php echo $arg1; ?>"><?php echo $category['name']; ?></a>
+        </div>
+    <?php endforeach; ?>
+</body>
 </html>
-<?php
-
-//dobrax3, i tutaj zamiast li ma tworzyc oddzielne kwadraty z linkami /shop/categorySlug
-
-?>
