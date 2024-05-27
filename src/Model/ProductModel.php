@@ -2,18 +2,18 @@
 
 namespace App\Model;
 
-class ShopProduct extends AbstractModel
+class ProductModel extends AbstractModel
 {
     public function getProduct(string $productSlug)
     {
         $query = "SELECT id, name, price, description, producer
-                  From Product
-                  Where slug = :productSlug";
+                  FROM Product
+                  WHERE slug = :productSlug";
 
         $statement = $this->db->prepare($query);
         $statement->bindParam(":productSlug", $productSlug);
         $statement->execute();
-        $product = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        $product = $statement->fetch(\PDO::FETCH_ASSOC);
         return $product;
     }
 
@@ -25,8 +25,8 @@ class ShopProduct extends AbstractModel
         $statement = $this->db->prepare($query);
         $statement->bindParam(':categorySlug', $categorySlug);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        return $category;
+        $products = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $products;
     }
-
 }
+?>

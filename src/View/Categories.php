@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kategorie</title>
     <style>
-        .categoryprod {
+        .category {
             width: 100px; 
             height: 100px; 
-            background-color: lightgreen; 
+            background-color: #ccc; 
             margin: 10px;
             float: left; 
         }
     </style>
 </head>
 <body>
-    <h1>Produkty tej kategorii</h1>
-    <?php foreach ($products as $product): ?>
-        <div class="categoryprod">
-            <a href="/sklep/<?php echo $product['slug'];?>/<?php echo $product['slug'];?> "><?php echo $product['name']; ?></a>
+    <h1>Produkty</h1>
+    <?php foreach ($categories as $category): ?>
+        <div class="category">
+        <a href="/sklep/<?php echo $category['slug'];?>"><?php echo $category['name']; ?></a>
         </div>
     <?php endforeach; ?>
 </body>
