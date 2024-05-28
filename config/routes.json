@@ -1,12 +1,9 @@
 {
     "/^kontakt$/": {"controller":"App\\Controller\\ContactController","action":"index"},
     "/^opinie$/": {"controller":"App\\Controller\\OpinionsController","action":"index"},
-
+    
     "/^main$/": {"controller": "App\\Controller\\MainController", "action": "index"},
     "/^sklep$/": {"controller": "App\\Controller\\CategoriesController", "action": "index"},
     "/^sklep\\/(?'category'[a-zA-Z0-9\\-]+)$/": {"controller": "App\\Controller\\CategProdController", "action": "index"},
-    "/^sklep\\/(?'category'[a-zA-Z0-9\\-]+)\\/(?'product'[a-zA-Z0-9\\-]+)$/": {"controller": "App\\Controller\\ProductController", "action": "index"},
-
-    "/^api\\/CommentSubmit\\.php$/": {"controller": "App\\Controller\\CommentController", "action": "submit"}
-
-}   
+    "/^sklep\\/(?'category'[a-zA-Z0-9\\-]+)\\/(?'product'[a-zA-Z0-9\\-]+)$/": {"controller": "App\\Controller\\ProductController", "action": "index"}
+}

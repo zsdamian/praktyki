@@ -8,7 +8,6 @@ use App\Core\Router;
 use App\Model\AbstractModel;
 use App\Model\CategoryModel;
 use App\Model\ProductModel;
-use App\Model\CommentsModel;
 class Bootstrap {
 
     private $config;
@@ -38,15 +37,12 @@ class Bootstrap {
 
         $categories = new CategoryModel($pdo);
         $product = new ProductModel($pdo);
-        $comments = new CommentsModel($pdo);
-
         $container->addService('pdo', $pdo);
 
         $container->addService('Request', $request);
 
         $container->addService('CategoryModel', $categories);
         $container->addService('ProductModel', $product);
-        $container->addService('CommentsModel', $comments);
         
         return $container;
 

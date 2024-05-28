@@ -28,7 +28,7 @@ class Router {
                 return $this->callController($request, $value);
             }
         }
-        return "404";
+        return "404 Router.php";
     }
     private function callController(Request $request, array $config): string
     {
