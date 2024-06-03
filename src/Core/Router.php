@@ -2,16 +2,12 @@
 
 namespace App\Core;
 
-class Router {
+use App\Core\Request;
+use App\Core\Container;
 
-    /**
-     * @var array
-     */
+class Router
+{
     private $routes;
-
-    /**
-     * @var Container
-     */
     private $container;
 
     public function __construct(Container $container)
@@ -19,17 +15,18 @@ class Router {
         $this->container = $container;
         $this->routes = json_decode(file_get_contents('config/routes.json'), true);
     }
+    
     public function route(Request $request): string
     {
-        foreach ($this->routes as $key => $value) {
-            $matches = [];
-            if (preg_match($key, $request->getUrl(), $matches)) {
+        foreach ($this->routes as $pattern => $config) {
+            if (preg_match($pattern, $request->getUrl(), $matches)) {
                 $request->setArguments($matches);
-                return $this->callController($request, $value);
+                return $this->callController($request, $config);
             }
         }
-        return "404 Router.php";
+        return "404 Not Found";
     }
+    
     private function callController(Request $request, array $config): string
     {
         $controllerName = $config["controller"];
@@ -38,3 +35,4 @@ class Router {
         return $controller->$actionName($request);
     }
 }
+?>

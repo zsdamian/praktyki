@@ -11,9 +11,13 @@ class ProductController extends BaseController
         $productSlug = $request->getArgument('product');
         $productModel = $this->container->get('ProductModel');
 
-        $product = $productModel->getProduct($productSlug);
+        $commentsModel = $this->container->get('CommentsModel');
 
-        return $this->view('Product', ['product' => $product, 'productSlug' => $productSlug]);
+        $comments = $commentsModel->getComments();
+        $product = $productModel->getProduct($productSlug);
+        
+
+        return $this->view('Product', ['product' => $product, 'productSlug' => $productSlug, 'comments' => $comments]);
     }
 }
 ?>
