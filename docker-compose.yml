@@ -6,7 +6,8 @@ services:
             context: .
             dockerfile: Dockerfile
         volumes:
-            - ./src:/var/www/html # volumen łączący katalog src z katalogiem głownym projektu w kontenerze
+            - .:/var/www/html # volumen łączący katalog src z katalogiem głownym projektu w kontenerze
+            - ./apache2/apache2.conf:/etc/apache2/httpd.conf
         networks:
             - app
         depends_on:

@@ -27,9 +27,9 @@ Pamiętaj o restart.
 
 Przygotuj mechanizm routingu. Chodzi o to ,że definiujesz sobie dozwolone routy, np:
 
-        $routes = [
-            '/jakas/moja/strona' => [JakisController::class, 'funkcjaKtoraMaSieWywolac']
-        ]
+          $routes = [
+             '/jakas/moja/strona' => [JakisController::class, 'funkcjaKtoraMaSieWywolac']
+         ]
 
 I jeżeli router wykryje ,że trafiłeś na ten adres to odpali własnie ten callback.
 Jak uda Ci się to ogarnąć to masz już elegancko dobrą bazę, reszta pójdzie gładko.
